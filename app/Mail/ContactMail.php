@@ -11,15 +11,15 @@ class ContactMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $email;
+    public $details;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(Request $request)
+    public function __construct($details)
     {
-        $this->email = $request;
+        $this->details = $details;
     }
 
     /**
@@ -29,9 +29,7 @@ class ContactMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Új üzenet az oldalról')
-                    ->from('jersey@jerseytehen.hu')
-                    ->to('6fad682fd1-cb49c1@inbox.mailtrap.io')
+        return $this->subject('Kapcsolatfelvétel a weboldalról')
                     ->view('email.contactmail');
     }
 }

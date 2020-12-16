@@ -109,12 +109,18 @@
       @endif
       <div class="mail">
           <h4>Küldj nekünk üzenetet!</h4>
-          <form id="form" class="topBefore" method="POST">
-
-              <input id="name" type="text" placeholder="NÉV">
-              <input id="email" type="text" placeholder="E-MAIL">
-              <textarea id="message" type="text" placeholder="ÜZENET"></textarea>
-      <input id="submit" type="submit" class="g-recaptcha" data-sitekey="6LdmLv4ZAAAAAHrfhMfpikjHo5NMtcQEFGxL2a0H" data-action='submit' data-callback='onSubmit' value="ELKÜLDÖM">
+          <form id="form" class="topBefore" method="POST" action="{{ route('send_mail') }}">
+            @csrf
+              <input id="name" type="text" name="name" placeholder="NÉV">
+              <input id="email" type="text" name="email" placeholder="E-MAIL">
+              <textarea id="message" type="text" name="message" placeholder="ÜZENET"></textarea>
+      <input id="submit" type="submit" value="ELKÜLDÖM">
+      <div style="display: flex; justify-content: center;">
+        <label for="checkboxG3" style="display: inline-block;"><input type="checkbox" name="checkboxG3" id="checkboxG3" style="display: inline; width: 20px; height: auto; padding: 0px;"/>
+            <i style="font-size: 12px;">Elolvastam és elfogadom az <a href="{{ route('adatk') }}">Adatvédelmi nyilatkozatot</a>!</i><br>
+        <i style="font-size: 10px;">Kötelező bepipálni, hogy az üzenetet el tudjuk küldeni!</i>
+        </label>
+        </div>
     </form>
       </div>
   </section>
@@ -122,4 +128,17 @@
     <div class="slide2">
     </div>
   </div> --}}
+@endsection
+@section('captcha')
+<script>
+    $(function() {
+    $('#checkboxG3').click(function() {
+        if ($(this).is(':checked')) {
+            $('#submit').removeAttr('disabled');
+        } else {
+            $('#submit').attr('disabled', 'disabled');
+        }
+        });
+    });
+</script>
 @endsection

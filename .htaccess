@@ -1,11 +1,11 @@
 Options -MultiViews -Indexes
 
 RewriteEngine On
-RewriteCond %{HTTP_HOST} ^www.jerseytehen.hu [NC]
-RewriteRule ^(.*)$ http://jerseytehen.hu/$1 [L,R=301]
+#RewriteCond %{HTTP_HOST} ^www.jerseytehen.hu [NC]
+#RewriteRule ^(.*)$ http://jerseytehen.hu/$1 [L,R=301]
 #Force from http to https
-RewriteCond %{ENV:HTTPS} !on
-RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+#RewriteCond %{ENV:HTTPS} !on
+#RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 #Header always set Content-Security-Policy "upgrade-insecure-requests;"
 # Handle Authorization Header
 RewriteCond %{HTTP:Authorization} .
@@ -27,9 +27,9 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_URI} !^/public/
 RewriteRule ^(css|js|img)/(.*)$ public/$1/$2 [L,NC]
 
-<FilesMatch \.php$>
-    SetHandler php73-cgi
-</FilesMatch>
+#<FilesMatch \.php$>
+#    SetHandler php73-cgi
+#</FilesMatch>
 <IfModule mod_deflate.c>
   # Compress HTML, CSS, JavaScript, Text, XML and fonts
   AddOutputFilterByType DEFLATE application/javascript

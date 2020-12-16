@@ -32,13 +32,13 @@
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.0/css/lightgallery.min.css" rel="stylesheet">
     {{-- <link href="{{ asset('css/lg-transitions.css') }}" rel="stylesheet"> --}}
-    {{-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> --}}
-    <script>
+    {{-- <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+     <script>
         function onSubmit(token) {
             document.getElementById("form").submit();
         }
 
-    </script>
+    </script> --}}
 </head>
 
 <body>
@@ -79,7 +79,7 @@
         </nav>
         @yield('content')
         <footer>
-            <p><a href="{{ route('adatk') }}" target="_blank" class="hvr-grow">Adatvédelmi nyilatkozat</a> | <a href="#" class="hvr-grow">Süti
+            <p><a href="{{ route('adatk') }}" target="_blank" class="hvr-grow">Adatvédelmi nyilatkozat</a> | <a href="{{ route('suti') }}" class="hvr-grow">Süti
                     szabályzat</a> | <a href="{{ route('contact') }}" class="hvr-grow">Kapcsolat</a></p>
         </footer>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -263,6 +263,7 @@
             AOS.init();
 
         </script>
+        @yield('captcha')
 </body>
 
 </html>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use App\Mail\ContactMail;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -31,13 +32,16 @@ Route::get('pricelistPDF', 'PricepageController@createPDF');
 Route::get('references','RefpageController@index')->name('references');
 Route::get('galeria','FileUploadController@show')->name('gallery');
 Route::get('kapcsolat','ContactController@index')->name('contact');
-Route::post('contact', function(Request $request){
-    Mail::send(new ContactMail($request));
+/*Route::post('contact', function(Request $request){ Mail::send(new ContactMail($request));
     return back();
-});
+}); */
+Route::post('kapcsolat-mail', 'ContactController@sendMail')->name('send_mail');
 Route::get('adatvedelmi-nyilatkozat', function(){
     return view('adatkezeles');
 })->name('adatk');
+Route::get('sutik', function(){
+    return view('suti');
+})->name('suti');
 Auth::routes(['register' => false]);
 
 //Back-------------------------
